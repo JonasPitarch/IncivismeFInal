@@ -68,11 +68,11 @@ public class HomeFragment extends Fragment {
 
 
         binding.buttonNotificar.setOnClickListener(button -> {
-            Servidor incidencia = new Servidor();
-            incidencia.setDireccio(binding.txtDireccio.getText().toString());
-            incidencia.setLatitud(binding.txtLatitud.getText().toString());
-            incidencia.setLongitud(binding.txtLongitud.getText().toString());
-            incidencia.setDserver(binding.txtDescripcio.getText().toString());
+            Servidor servidor = new Servidor();
+            servidor.setDireccio(binding.txtDireccio.getText().toString());
+            servidor.setLatitud(binding.txtLatitud.getText().toString());
+            servidor.setLongitud(binding.txtLongitud.getText().toString());
+            servidor.setDserver(binding.txtDescripcio.getText().toString());
 
             DatabaseReference base = FirebaseDatabase.getInstance().getReference();
             DatabaseReference users = base.child("users");
@@ -80,7 +80,7 @@ public class HomeFragment extends Fragment {
             DatabaseReference incidencies = uid.child("incidencies");
             DatabaseReference reference = incidencies.push();
 
-            reference.setValue(incidencia);
+            reference.setValue(servidor);
         });
 
 

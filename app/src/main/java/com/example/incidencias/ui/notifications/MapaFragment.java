@@ -58,51 +58,7 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
                 map.animateCamera(cameraUpdate);
             }
         });
-        cargarIncidencias();
     }
 
-    private void cargarIncidencias() {
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        DatabaseReference base = FirebaseDatabase.getInstance().getReference();
 
-        if (auth.getCurrentUser() != null) {
-            DatabaseReference users = base.child("users");
-            DatabaseReference uid = users.child(auth.getUid());
-            DatabaseReference incidencies = uid.child("incidencies");
-
-            incidencies.addChildEventListener(new ChildEventListener() {
-                @Override
-                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                    Servidor incidencia = dataSnapshot.getValue(Servidor.class);
-                    if (incidencia != null) {
-                        LatLng aux = new LatLng(
-                                Double.parseDouble(incidencia.getLatitud()),
-                                Double.parseDouble(incidencia.getLongitud())
-                        );
-
-                        map.addMarker(new MarkerOptions()
-                                .title(incidencia.getDserver())
-                                .snippet(incidencia.getDireccio())
-                                .position(aux));
-                    }
-                }
-
-                @Override
-                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                }
-
-                @Override
-                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-                }
-
-                @Override
-                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-                }
-            });
-        }
-    }
 }

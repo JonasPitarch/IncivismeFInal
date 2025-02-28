@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "304247242455",
+    "firebase_url": "https://incidenciasjonas-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "incidenciasjonas",
+    "storage_bucket": "incidenciasjonas.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:304247242455:android:6e0abaeaf71afbbcf6fa92",
+        "android_client_info": {
+          "package_name": "com.example.incidencias"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "304247242455-d88376jtl421bn1uv5ebupudoofrvdmh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMhKaWfqnnreC8wZGsGFFb7I2YcnczVPE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "304247242455-d88376jtl421bn1uv5ebupudoofrvdmh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

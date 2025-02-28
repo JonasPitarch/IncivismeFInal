@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Incidencias</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="default_web_client_id">304247242455-d88376jtl421bn1uv5ebupudoofrvdmh.apps.googleusercontent.com</string>
+
+</resources>

@@ -73,6 +73,7 @@ public class HomeFragment extends Fragment {
             servidor.setLatitud(binding.txtLatitud.getText().toString());
             servidor.setLongitud(binding.txtLongitud.getText().toString());
             servidor.setDserver(binding.txtDescripcio.getText().toString());
+            servidor.getHola();
 
             DatabaseReference base = FirebaseDatabase.getInstance().getReference();
             DatabaseReference users = base.child("users");
@@ -173,7 +174,7 @@ public class HomeFragment extends Fragment {
                 Log.e("INCIVISME", resultMessage, ioException);
             } catch (IllegalArgumentException illegalArgumentException) {
                 resultMessage = "Coordenades no vàlides";
-                Log.e("INCIVISME", resultMessage + ". " + "Latitude = " + location.getLatitude() + ", Longitude = " + location.getLongitude(), illegalArgumentException);
+                Log.e("INCIVISME2", resultMessage + ". " + "Latitude = " + location.getLatitude() + ", Longitude = " + location.getLongitude(), illegalArgumentException);
             }
         });
     }

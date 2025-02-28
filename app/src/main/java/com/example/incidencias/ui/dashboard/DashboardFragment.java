@@ -51,7 +51,7 @@ public class DashboardFragment extends Fragment {
                         .setLifecycleOwner(this)
                         .build();
 
-                IncidenciaAdapter adapter = new IncidenciaAdapter(options);
+                ServerAdapter adapter = new ServerAdapter(options);
 
                 binding.rvIncidencies.setAdapter(adapter);
                 binding.rvIncidencies.setLayoutManager(
@@ -71,14 +71,14 @@ public class DashboardFragment extends Fragment {
         binding = null;
     }
 
-    public class IncidenciaAdapter extends FirebaseRecyclerAdapter<Servidor, IncidenciaAdapter.IncidenciaViewholder> {
-        public IncidenciaAdapter(@NonNull FirebaseRecyclerOptions<Servidor> options) {
+    public class ServerAdapter extends FirebaseRecyclerAdapter<Servidor, ServerAdapter.ServerViewHolder> {
+        public ServerAdapter(@NonNull FirebaseRecyclerOptions<Servidor> options) {
             super(options);
         }
 
         @Override
         protected void onBindViewHolder(
-        @NonNull IncidenciaViewholder holder, int position, @NonNull Servidor model
+        @NonNull ServerViewHolder holder, int position, @NonNull Servidor model
             ) {
             holder.binding.txtDescripcio.setText(model.getDserver());
             holder.binding.txtAdreca.setText(model.getDireccio());
@@ -86,18 +86,18 @@ public class DashboardFragment extends Fragment {
 
         @NonNull
         @Override
-        public IncidenciaViewholder onCreateViewHolder(
+        public ServerViewHolder onCreateViewHolder(
         @NonNull ViewGroup parent, int viewType
             ) {
-            return new IncidenciaViewholder(RvIncidenciesItemBinding.inflate(
+            return new ServerViewHolder(RvIncidenciesItemBinding.inflate(
                     LayoutInflater.from(parent.getContext()),
                     parent, false));
         }
 
-        class IncidenciaViewholder extends RecyclerView.ViewHolder {
+        class ServerViewHolder extends RecyclerView.ViewHolder {
             RvIncidenciesItemBinding binding;
 
-            public IncidenciaViewholder(RvIncidenciesItemBinding binding) {
+            public ServerViewHolder(RvIncidenciesItemBinding binding) {
                 super(binding.getRoot());
                 this.binding = binding;
             }

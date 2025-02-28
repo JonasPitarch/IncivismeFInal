@@ -60,5 +60,49 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
         });
     }
 
+    private void cargarServer() {
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        DatabaseReference base = FirebaseDatabase.getInstance().getReference();
 
+        if (auth.getCurrentUser() != null) {
+            DatabaseReference users = base.child("users");
+            DatabaseReference uid = users.child(auth.getUid());
+            DatabaseReference incidencies = uid.child("incidencies");
+
+            incidencies.addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                    Servidor servidor = dataSnapshot.getValue(Servidor.class);
+                    if (servidor != null) {
+                        LatLng aux = new LatLng(
+                                Double.parseDouble(servidor.getLatitud()),
+                                Double.parseDouble(servidor.getLongitud())
+                        );
+
+                        map.addMarker(new MarkerOptions()
+                                .title(servidor.getDserver())
+                                .snippet(servidor.getDireccio())
+                                .snippet(servidor.getHola())
+                                .position(aux));
+                    }
+                }
+
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                }
+
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+                }
+
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                }
+            });
+        }
+    }
 }
